@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prince Tent & Events</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    scroll-behavior:smooth;
+}
+
+/* HEADER */
+header{
+    height:100vh;
+    background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.8)),
+    url('https://images.unsplash.com/photo-1529692236671-f1dcba86db8a') center/cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+header h1{
+    font-size:3rem;
+    color:gold;
+    animation:fadeDown 1.5s ease;
+}
+
+header p{
+    margin:15px 0;
+    font-size:1.1rem;
+    animation:fadeUp 1.5s ease;
+}
+
+.btn{
+    padding:12px 25px;
+    background:gold;
+    color:#000;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:25px;
+    margin:10px;
+    display:inline-block;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#fff;
+    transform:scale(1.05);
+}
+
+/* SECTIONS */
+section{
+    padding:60px 10%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:40px;
+    color:gold;
+    font-size:2rem;
+}
+
+/* ABOUT */
+.about{
+    text-align:center;
+    line-height:1.8;
+}
+
+/* SERVICES */
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.service-box{
+    background:#111;
+    padding:25px;
+    text-align:center;
+    border-radius:10px;
+    transition:.4s;
+}
+
+.service-box:hover{
+    transform:translateY(-10px);
+    background:#1c1c1c;
+}
+
+/* GALLERY */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:10px;
+    transition:.4s;
+}
+
+.gallery img:hover{
+    transform:scale(1.08);
+}
+
+/* CONTACT */
+.contact{
+    text-align:center;
+    line-height:2;
+}
+
+/* FOOTER */
+footer{
+    background:#111;
+    text-align:center;
+    padding:15px;
+    font-size:.9rem;
+}
+
+/* ANIMATIONS */
+@keyframes fadeDown{
+    from{opacity:0;transform:translateY(-40px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(40px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+/* WHATSAPP BUTTON */
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    padding:15px;
+    border-radius:50%;
+    font-size:20px;
+    text-decoration:none;
+    box-shadow:0 0 10px #25D366;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div>
+        <h1>Prince Tent & Events</h1>
+        <p>Complete Tent, Catering & Event Solutions</p>
+        <a href="tel:9199138929" class="btn">Call Now</a>
+        <a href="#contact" class="btn">Contact Us</a>
+    </div>
+</header>
+
+<section class="about">
+    <h2 class="title">About Us</h2>
+    <p>
+        Prince Tent & Events provides professional tent and catering services
+        for weddings, birthdays and all kinds of events in Saharsa and nearby areas.
+        We are known for quality service, timely setup and reasonable pricing.
+    </p>
+</section>
+
+<section>
+    <h2 class="title">Our Services</h2>
+    <div class="services">
+        <div class="service-box">Wedding Tent Decoration</div>
+        <div class="service-box">Catering Services</div>
+        <div class="service-box">Birthday Party Setup</div>
+        <div class="service-box">Stage & Lighting</div>
+        <div class="service-box">Chair & Table Arrangement</div>
+    </div>
+</section>
+
+<section>
+    <h2 class="title">Gallery</h2>
+    <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1521334884684-d80222895322">
+        <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0">
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed">
+        <img src="https://images.unsplash.com/photo-1506784365847-bbad939e9335">
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <h2 class="title">Contact Us</h2>
+    <p><strong>Prince Raj</strong></p>
+    <p>📞 9199138929 | 9128576260</p>
+    <p>📧 iamprinceraj25@gmail.com</p>
+    <p>📍 Lakhan Sweet Corner, Nagar Palika Chowk, Saharsa, Bihar - 852201</p>
+</section>
+
+<footer>
+    © 2025 Prince Tent & Events. All Rights Reserved.
+</footer>
+
+<a href="https://wa.me/9199138929" class="whatsapp">💬</a>
+
+<script>
+// Simple scroll animation
+const boxes = document.querySelectorAll('.service-box');
+
+window.addEventListener('scroll', ()=>{
+    boxes.forEach(box=>{
+        const pos = box.getBoundingClientRect().top;
+        if(pos < window.innerHeight - 100){
+            box.style.opacity = 1;
+            box.style.transform = 'translateY(0)';
+        }
+    });
+});
+</script>
+
+</body>
+</html>
