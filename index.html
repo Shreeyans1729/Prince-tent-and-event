@@ -11,7 +11,6 @@
 :root{
   --gold:#d4af37;
   --dark:#050505;
-  --glass:rgba(255,255,255,0.08);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -19,7 +18,7 @@
 body{
   background:var(--dark);
   color:#fff;
-  font-family:'Poppins', sans-serif;
+  font-family:'Poppins',sans-serif;
   overflow-x:hidden;
 }
 
@@ -38,30 +37,19 @@ body{
   position:relative;
 }
 
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at top,var(--gold),transparent 65%);
-  opacity:.18;
-}
-
 .hero-content{z-index:2;}
 
 .hero-logo{
-  width:160px;
-  height:160px;
-  object-fit:contain;
+  width:160px;height:160px;
   border-radius:50%;
   background:rgba(0,0,0,.6);
   padding:15px;
   margin-bottom:25px;
   border:2px solid var(--gold);
-  box-shadow:0 0 35px rgba(212,175,55,.6);
 }
 
 .hero h1{
-  font-family:'Playfair Display', serif;
+  font-family:'Playfair Display',serif;
   font-size:3.2rem;
   color:var(--gold);
 }
@@ -75,7 +63,6 @@ body{
   text-decoration:none;
   border-radius:40px;
   margin:10px;
-  display:inline-block;
 }
 
 /* ================= SECTIONS ================= */
@@ -83,27 +70,23 @@ section{padding:90px 5%;}
 
 .section-title{
   text-align:center;
-  font-family:'Playfair Display', serif;
+  font-family:'Playfair Display',serif;
   font-size:2.5rem;
   color:var(--gold);
   margin-bottom:50px;
 }
 
-/* ================= PHOTO STACK (FINAL SIZE) ================= */
-.stack-wrapper{
-  display:flex;
-  justify-content:center;
-}
+/* ================= PHOTO STACK ================= */
+.stack-wrapper{display:flex;justify-content:center;}
 
 .photo-stack{
-  width:95vw;          /* almost full width on mobile */
-  max-width:420px;     /* controlled on large screens */
-  height:600px;        /* tall so details visible */
+  width:95vw;
+  max-width:420px;
+  height:600px;
   position:relative;
   perspective:1600px;
 }
 
-/* CARD */
 .card{
   position:absolute;
   inset:0;
@@ -111,8 +94,7 @@ section{padding:90px 5%;}
   overflow:hidden;
   background:#000;
   box-shadow:0 40px 100px rgba(0,0,0,.8);
-  transition-property:transform,opacity;
-  transition-timing-function:cubic-bezier(.19,1,.22,1);
+  transition:transform .9s cubic-bezier(.19,1,.22,1),opacity .9s;
 }
 
 .card img{
@@ -121,7 +103,6 @@ section{padding:90px 5%;}
   object-fit:cover;
 }
 
-/* GOLD BORDER */
 .card::after{
   content:"";
   position:absolute;
@@ -130,42 +111,47 @@ section{padding:90px 5%;}
   border-radius:inherit;
 }
 
-/* STACK POSITIONS */
-.front{
-  z-index:3;
-  transform:translateX(0) scale(1);
-}
-.middle{
-  z-index:2;
-  transform:translate(24px,24px) scale(.96);
-  opacity:.85;
-}
-.back{
-  z-index:1;
-  transform:translate(48px,48px) scale(.92);
-  opacity:.6;
-}
+.front{z-index:3;}
+.middle{z-index:2;transform:translate(24px,24px) scale(.96);opacity:.85;}
+.back{z-index:1;transform:translate(48px,48px) scale(.92);opacity:.6;}
 
-/* SLIDE */
-.slide-left{
-  transform:translateX(-130%) scale(.92);
-  opacity:0;
-}
-.slide-right{
-  transform:translateX(130%) scale(.92);
-  opacity:0;
-}
+.slide-left{transform:translateX(-130%) scale(.92);opacity:0;}
+.slide-right{transform:translateX(130%) scale(.92);opacity:0;}
 
-/* ================= VIDEO GALLERY ================= */
-.video-gallery{
+/* ================= VIDEO SECTION ================= */
+.video-list{
+  max-width:500px;
+  margin:auto;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:25px;
+  gap:35px;
 }
-.video-gallery video{
+
+.video-box{
+  position:relative;
+  border-radius:24px;
+  overflow:hidden;
+  border:1px solid rgba(212,175,55,.35);
+  transform:scale(.95);
+  opacity:0;
+  transition:.8s ease;
+}
+
+.video-box video{
   width:100%;
-  border-radius:22px;
-  border:1px solid rgba(212,175,55,.3);
+  display:block;
+}
+
+/* label */
+.video-label{
+  position:absolute;
+  bottom:10px;
+  left:10px;
+  background:rgba(0,0,0,.6);
+  color:#fff;
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:.85rem;
+  border:1px solid rgba(212,175,55,.6);
 }
 
 /* ================= CONTACT ================= */
@@ -221,12 +207,27 @@ footer{
 <!-- VIDEOS -->
 <section>
   <h2 class="section-title">Event Videos</h2>
-  <div class="video-gallery">
-    <video controls src="VID-20251226-WA0014.mp4"></video>
-    <video controls src="VID-20251226-WA0020.mp4"></video>
-    <video controls src="VID-20251226-WA0021.mp4"></video>
-    <video controls src="VID-20251226-WA0026.mp4"></video>
-    <video controls src="VID-20251226-WA0029.mp4"></video>
+  <div class="video-list">
+    <div class="video-box reveal">
+      <video controls src="VID-20251226-WA0014.mp4"></video>
+      <div class="video-label">Live Wedding Entry</div>
+    </div>
+    <div class="video-box reveal">
+      <video controls src="VID-20251226-WA0020.mp4"></video>
+      <div class="video-label">Stage Decoration</div>
+    </div>
+    <div class="video-box reveal">
+      <video controls src="VID-20251226-WA0021.mp4"></video>
+      <div class="video-label">Catering Service</div>
+    </div>
+    <div class="video-box reveal">
+      <video controls src="VID-20251226-WA0026.mp4"></video>
+      <div class="video-label">Wedding Lighting</div>
+    </div>
+    <div class="video-box reveal">
+      <video controls src="VID-20251226-WA0029.mp4"></video>
+      <div class="video-label">Live Event Moments</div>
+    </div>
   </div>
 </section>
 
@@ -245,6 +246,7 @@ footer{
 <a href="https://wa.me/9199138929" class="whatsapp">💬</a>
 
 <script>
+/* PHOTO SLIDER */
 const images=[
  "IMG-20251226-WA0016.jpg",
  "IMG-20251226-WA0017.jpg",
@@ -259,8 +261,6 @@ const images=[
 let index=0;
 const stack=document.getElementById("photoStack");
 let cards=Array.from(stack.children);
-
-/* AUTO SLIDE 3s */
 let auto=setInterval(()=>slide("left",900),3000);
 
 function slide(dir,dur){
@@ -277,21 +277,19 @@ function slide(dir,dur){
   },dur);
 }
 
-/* TOUCH SPEED CONTROL */
-let sx=0,st=0;
-stack.addEventListener("touchstart",e=>{
- clearInterval(auto);
- sx=e.touches[0].clientX;
- st=Date.now();
-});
-stack.addEventListener("touchend",e=>{
- let dx=e.changedTouches[0].clientX-sx;
- let t=Date.now()-st;
- let speed=Math.abs(dx/t);
- let dur=Math.max(350,Math.min(1000,900-speed*300));
- if(Math.abs(dx)>40) slide(dx<0?"left":"right",dur);
- auto=setInterval(()=>slide("left",900),3000);
-});
+/* VIDEO REVEAL */
+const vids=document.querySelectorAll(".video-box");
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.opacity=1;
+      e.target.style.transform="scale(1)";
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+
+vids.forEach(v=>obs.observe(v));
 </script>
 
 </body>
