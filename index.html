@@ -11,7 +11,6 @@
 :root{
   --gold:#d4af37;
   --dark:#050505;
-  --dark2:#0b0b0b;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -46,29 +45,7 @@ body{
   position:relative;
 }
 
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at top,var(--gold),transparent 70%);
-  opacity:.15;
-  animation:lightMove 12s ease-in-out infinite alternate;
-}
-
-@keyframes lightMove{
-  from{transform:translateX(-10%)}
-  to{transform:translateX(10%)}
-}
-
-.hero-content{
-  z-index:2;
-  animation:heroFade 1.8s ease forwards;
-}
-
-@keyframes heroFade{
-  from{opacity:0;transform:translateY(60px)}
-  to{opacity:1;transform:translateY(0)}
-}
+.hero-content{z-index:2;}
 
 .hero-logo{
   width:160px;
@@ -85,13 +62,9 @@ body{
   font-family:'Playfair Display',serif;
   font-size:3.2rem;
   color:var(--gold);
-  text-shadow:0 8px 20px rgba(0,0,0,.7);
 }
 
-.hero p{
-  margin:18px 0 35px;
-  letter-spacing:.5px;
-}
+.hero p{margin:18px 0 35px;}
 
 .btn{
   padding:14px 38px;
@@ -103,18 +76,13 @@ body{
   display:inline-block;
   transition:.4s;
 }
-
 .btn:hover{
   background:var(--gold);
   color:#000;
-  box-shadow:0 0 30px rgba(212,175,55,.8);
 }
 
 /* ================= SECTIONS ================= */
-section{
-  padding:100px 6%;
-  position:relative;
-}
+section{padding:100px 6%;}
 
 .section-title{
   text-align:center;
@@ -125,10 +93,7 @@ section{
 }
 
 /* ================= PHOTO STACK ================= */
-.stack-wrapper{
-  display:flex;
-  justify-content:center;
-}
+.stack-wrapper{display:flex;justify-content:center;}
 
 .photo-stack{
   width:95vw;
@@ -169,12 +134,7 @@ section{
 .slide-left{transform:translateX(-130%) scale(.92);opacity:0;}
 .slide-right{transform:translateX(130%) scale(.92);opacity:0;}
 
-/* ================= DIVIDER SPACE ================= */
-.divider-space{
-  height:120px;
-}
-
-/* ================= VIDEO SECTION ================= */
+/* ================= VIDEO ================= */
 .video-list{
   max-width:520px;
   margin:auto;
@@ -193,31 +153,47 @@ section{
   transition:1s ease;
 }
 
-.video-box video{
-  width:100%;
-  display:block;
-}
+.video-box video{width:100%;}
 
 .video-label{
   position:absolute;
   bottom:12px;
   left:12px;
   background:rgba(0,0,0,.6);
-  color:#fff;
   padding:7px 14px;
   border-radius:20px;
   font-size:.85rem;
   border:1px solid rgba(212,175,55,.6);
 }
 
-/* ================= CONTACT ================= */
-.contact{
-  text-align:center;
-  line-height:2.2;
-  max-width:600px;
-  margin:auto;
+/* ================= CONTACT (HIGHLIGHTED) ================= */
+.contact-section{
+  background:
+    linear-gradient(135deg,rgba(212,175,55,.25),rgba(0,0,0,.9)),
+    linear-gradient(45deg,#d4af37,#a88c2a);
+  border-top:2px solid rgba(212,175,55,.6);
+  border-bottom:2px solid rgba(212,175,55,.6);
 }
 
+.contact-box{
+  max-width:600px;
+  margin:auto;
+  text-align:center;
+  background:rgba(0,0,0,.6);
+  padding:60px 30px;
+  border-radius:30px;
+  box-shadow:0 0 60px rgba(212,175,55,.4);
+}
+
+.contact-box h2{
+  color:var(--gold);
+}
+
+.contact-box p{
+  line-height:2.2;
+}
+
+/* ================= FOOTER ================= */
 footer{
   padding:25px;
   text-align:center;
@@ -236,7 +212,6 @@ footer{
   border-radius:50%;
   font-size:22px;
   text-decoration:none;
-  box-shadow:0 0 25px rgba(37,211,102,.7);
 }
 </style>
 </head>
@@ -266,8 +241,6 @@ footer{
   </div>
 </section>
 
-<div class="divider-space"></div>
-
 <!-- VIDEOS -->
 <section>
   <h2 class="section-title">Live Event Moments</h2>
@@ -281,8 +254,8 @@ footer{
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
-  <div class="contact">
+<section id="contact" class="contact-section">
+  <div class="contact-box">
     <h2 class="section-title">Contact Us</h2>
     <p><strong>Prince Raj</strong></p>
     <p>📞 9199138929 | 9128576260</p>
