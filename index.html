@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prince Tent & Events</title>
 
-<!-- GOOGLE FONT (Luxury Feel) -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- PREMIUM GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-/* =========================
-   GLOBAL RESET & VARIABLES
-========================= */
+/* ===============================
+   ROOT VARIABLES & RESET
+================================ */
 :root{
   --gold:#d4af37;
   --dark:#050505;
@@ -31,14 +31,14 @@ body{
   overflow-x:hidden;
 }
 
-/* =========================
-   HERO SECTION
-========================= */
+/* ===============================
+   HERO SECTION (CINEMATIC)
+================================ */
 .hero{
   height:100vh;
   background:
-  linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,.85)),
-  url('https://images.unsplash.com/photo-1519225421980-715cb0215aed');
+  linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.9)),
+  url("IMG-20251226-WA0015.jpg");
   background-size:cover;
   background-position:center;
   display:flex;
@@ -48,17 +48,17 @@ body{
   position:relative;
 }
 
-/* GOLD LIGHT OVERLAY ANIMATION */
+/* MOVING GOLD LIGHT */
 .hero::after{
-  content:'';
+  content:"";
   position:absolute;
   inset:0;
-  background:radial-gradient(circle at top,var(--gold),transparent 60%);
-  opacity:.15;
-  animation:glowMove 8s infinite alternate;
+  background:radial-gradient(circle at top,var(--gold),transparent 65%);
+  opacity:.18;
+  animation:goldMove 10s infinite alternate;
 }
 
-@keyframes glowMove{
+@keyframes goldMove{
   from{background-position:0% 0%;}
   to{background-position:100% 100%;}
 }
@@ -69,30 +69,49 @@ body{
 }
 
 @keyframes heroFade{
-  from{opacity:0;transform:translateY(60px);}
+  from{opacity:0;transform:translateY(80px);}
   to{opacity:1;transform:translateY(0);}
 }
 
-.hero img{
-  width:130px;
-  margin-bottom:20px;
-  filter:drop-shadow(0 0 15px var(--gold));
+/* ===============================
+   LOGO STYLE (EVENT LOGO)
+================================ */
+.hero-logo{
+  width:160px;
+  height:160px;
+  object-fit:contain;
+  border-radius:50%;
+  background:rgba(0,0,0,.6);
+  padding:15px;
+  margin-bottom:25px;
+  border:2px solid var(--gold);
+  box-shadow:0 0 35px rgba(212,175,55,.6);
+  animation:logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-12px);}
+  100%{transform:translateY(0);}
 }
 
 .hero h1{
   font-family:'Playfair Display', serif;
-  font-size:3.2rem;
+  font-size:3.3rem;
   color:var(--gold);
 }
 
 .hero p{
-  margin:15px 0 30px;
+  margin:18px 0 35px;
   font-size:1.1rem;
   letter-spacing:1px;
 }
 
+/* ===============================
+   BUTTONS
+================================ */
 .btn{
-  padding:14px 35px;
+  padding:14px 36px;
   border:1px solid var(--gold);
   color:var(--gold);
   text-decoration:none;
@@ -105,12 +124,12 @@ body{
 .btn:hover{
   background:var(--gold);
   color:#000;
-  box-shadow:0 0 20px var(--gold);
+  box-shadow:0 0 25px var(--gold);
 }
 
-/* =========================
+/* ===============================
    SECTION BASE
-========================= */
+================================ */
 section{
   padding:90px 10%;
 }
@@ -123,13 +142,13 @@ section{
   margin-bottom:60px;
 }
 
-/* =========================
+/* ===============================
    ABOUT (GLASS EFFECT)
-========================= */
+================================ */
 .about{
   background:var(--glass);
-  backdrop-filter:blur(12px);
-  border-radius:20px;
+  backdrop-filter:blur(15px);
+  border-radius:24px;
   padding:60px;
   text-align:center;
   line-height:1.9;
@@ -137,9 +156,9 @@ section{
   opacity:0;
 }
 
-/* =========================
-   SERVICES (PREMIUM CARDS)
-========================= */
+/* ===============================
+   SERVICES
+================================ */
 .services{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -147,19 +166,19 @@ section{
 }
 
 .service{
-  background:linear-gradient(145deg,#0c0c0c,#141414);
+  background:linear-gradient(145deg,#0c0c0c,#151515);
   padding:40px 25px;
-  border-radius:20px;
+  border-radius:22px;
   text-align:center;
-  border:1px solid rgba(212,175,55,.2);
+  border:1px solid rgba(212,175,55,.25);
   transform:translateY(60px);
   opacity:0;
   transition:.4s;
 }
 
 .service:hover{
-  transform:translateY(-10px) scale(1.02);
-  box-shadow:0 0 30px rgba(212,175,55,.25);
+  transform:translateY(-12px) scale(1.03);
+  box-shadow:0 0 40px rgba(212,175,55,.35);
 }
 
 .service h3{
@@ -167,30 +186,47 @@ section{
   margin-bottom:15px;
 }
 
-/* =========================
-   GALLERY
-========================= */
+/* ===============================
+   IMAGE GALLERY
+================================ */
 .gallery{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:25px;
 }
 
 .gallery img{
   width:100%;
-  border-radius:18px;
-  transition:.6s;
+  border-radius:22px;
   transform:scale(.9);
   opacity:0;
+  transition:.6s;
 }
 
 .gallery img:hover{
   transform:scale(1.05);
 }
 
-/* =========================
+/* ===============================
+   VIDEO GALLERY
+================================ */
+.video-gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
+}
+
+.video-gallery video{
+  width:100%;
+  border-radius:22px;
+  border:1px solid rgba(212,175,55,.3);
+  transform:scale(.9);
+  opacity:0;
+}
+
+/* ===============================
    CONTACT
-========================= */
+================================ */
 .contact{
   text-align:center;
   line-height:2.2;
@@ -198,9 +234,9 @@ section{
   opacity:0;
 }
 
-/* =========================
+/* ===============================
    FOOTER
-========================= */
+================================ */
 footer{
   padding:25px;
   text-align:center;
@@ -209,9 +245,9 @@ footer{
   color:#aaa;
 }
 
-/* =========================
-   WHATSAPP FLOAT
-========================= */
+/* ===============================
+   WHATSAPP BUTTON
+================================ */
 .whatsapp{
   position:fixed;
   right:20px;
@@ -230,13 +266,13 @@ footer{
 
 <body>
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- ===============================
+     HERO SECTION
+================================ -->
 <section class="hero">
   <div class="hero-content">
-    <!-- LOGO: yahan apna logo ka path daalna -->
-    <img src="logo.png" alt="Prince Tent Logo">
+    <!-- EVENT LOGO -->
+    <img src="IMG-20251226-WA0012~2.jpg" alt="Prince Tent Logo" class="hero-logo">
 
     <h1>Prince Tent & Events</h1>
     <p>Luxury Tent • Catering • Wedding & Event Specialists</p>
@@ -246,48 +282,67 @@ footer{
   </div>
 </section>
 
-<!-- =========================
+<!-- ===============================
      ABOUT
-========================= -->
+================================ -->
 <section>
   <div class="about reveal">
     <h2 class="section-title">About Us</h2>
     <p>
       Prince Tent & Events is a premium wedding and event service provider based in Saharsa, Bihar.
       We specialize in luxury tent decoration, catering services and complete event execution.
-      Our focus is elegance, quality and unforgettable experiences.
+      Every event is designed to look royal, elegant and unforgettable.
     </p>
   </div>
 </section>
 
-<!-- =========================
+<!-- ===============================
      SERVICES
-========================= -->
+================================ -->
 <section>
   <h2 class="section-title">Our Services</h2>
   <div class="services">
-    <div class="service reveal"><h3>Wedding Tent Decoration</h3><p>Royal & modern themed setups</p></div>
-    <div class="service reveal"><h3>Catering Services</h3><p>Hygienic & delicious menus</p></div>
-    <div class="service reveal"><h3>Stage & Lighting</h3><p>Premium lighting & LED setups</p></div>
+    <div class="service reveal"><h3>Wedding Tent Decoration</h3><p>Royal themed premium setups</p></div>
+    <div class="service reveal"><h3>Catering Services</h3><p>Hygienic & delicious food</p></div>
+    <div class="service reveal"><h3>Stage & Lighting</h3><p>LED & luxury lighting design</p></div>
     <div class="service reveal"><h3>Birthday & Parties</h3><p>Elegant party arrangements</p></div>
   </div>
 </section>
 
-<!-- =========================
-     GALLERY
-========================= -->
+<!-- ===============================
+     IMAGE GALLERY
+================================ -->
 <section>
-  <h2 class="section-title">Our Work</h2>
+  <h2 class="section-title">Event Gallery</h2>
   <div class="gallery">
-    <img class="reveal-img" src="https://images.unsplash.com/photo-1521334884684-d80222895322">
-    <img class="reveal-img" src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0">
-    <img class="reveal-img" src="https://images.unsplash.com/photo-1506784365847-bbad939e9335">
+    <img class="reveal-img" src="IMG-20251226-WA0016.jpg">
+    <img class="reveal-img" src="IMG-20251226-WA0017.jpg">
+    <img class="reveal-img" src="IMG-20251226-WA0018.jpg">
+    <img class="reveal-img" src="IMG-20251226-WA0019.jpg">
+    <img class="reveal-img" src="IMG-20251226-WA0022.jpg">
+    <img class="reveal-img" src="IMG-20251226-WA0040.jpg">
+    <img class="reveal-img" src="IMG-20251226-WA0041.jpg">
+    <img class="reveal-img" src="IMG-20251226-WA0042.jpg">
   </div>
 </section>
 
-<!-- =========================
+<!-- ===============================
+     VIDEO GALLERY
+================================ -->
+<section>
+  <h2 class="section-title">Event Videos</h2>
+  <div class="video-gallery">
+    <video class="reveal-video" controls src="VID-20251226-WA0014.mp4"></video>
+    <video class="reveal-video" controls src="VID-20251226-WA0020.mp4"></video>
+    <video class="reveal-video" controls src="VID-20251226-WA0021.mp4"></video>
+    <video class="reveal-video" controls src="VID-20251226-WA0026.mp4"></video>
+    <video class="reveal-video" controls src="VID-20251226-WA0029.mp4"></video>
+  </div>
+</section>
+
+<!-- ===============================
      CONTACT
-========================= -->
+================================ -->
 <section id="contact">
   <div class="contact reveal">
     <h2 class="section-title">Contact Us</h2>
@@ -299,34 +354,40 @@ footer{
 </section>
 
 <footer>
-  © 2025 Prince Tent & Events | Designed with Premium Feel
+  © 2025 Prince Tent & Events | Luxury Event Specialists
 </footer>
 
 <a href="https://wa.me/9199138929" class="whatsapp">💬</a>
 
-<!-- =========================
-     SCROLL ANIMATION JS
-========================= -->
+<!-- ===============================
+     SCROLL REVEAL SCRIPT
+================================ -->
 <script>
 const reveals = document.querySelectorAll('.reveal');
 const imgs = document.querySelectorAll('.reveal-img');
+const videos = document.querySelectorAll('.reveal-video');
 
 function revealOnScroll(){
-  const trigger = window.innerHeight - 100;
+  const trigger = window.innerHeight - 120;
 
   reveals.forEach(el=>{
-    const top = el.getBoundingClientRect().top;
-    if(top < trigger){
+    if(el.getBoundingClientRect().top < trigger){
       el.style.opacity = 1;
       el.style.transform = 'translateY(0)';
     }
   });
 
   imgs.forEach(img=>{
-    const top = img.getBoundingClientRect().top;
-    if(top < trigger){
+    if(img.getBoundingClientRect().top < trigger){
       img.style.opacity = 1;
       img.style.transform = 'scale(1)';
+    }
+  });
+
+  videos.forEach(video=>{
+    if(video.getBoundingClientRect().top < trigger){
+      video.style.opacity = 1;
+      video.style.transform = 'scale(1)';
     }
   });
 }
