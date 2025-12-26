@@ -5,224 +5,334 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prince Tent & Events</title>
 
+<!-- GOOGLE FONT (Luxury Feel) -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
+/* =========================
+   GLOBAL RESET & VARIABLES
+========================= */
+:root{
+  --gold:#d4af37;
+  --dark:#050505;
+  --glass:rgba(255,255,255,0.08);
+}
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial, Helvetica, sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 body{
-    background:#000;
-    color:#fff;
-    scroll-behavior:smooth;
+  background:var(--dark);
+  color:#fff;
+  font-family:'Poppins', sans-serif;
+  overflow-x:hidden;
 }
 
-/* HEADER */
-header{
-    height:100vh;
-    background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.8)),
-    url('https://images.unsplash.com/photo-1529692236671-f1dcba86db8a') center/cover;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
+/* =========================
+   HERO SECTION
+========================= */
+.hero{
+  height:100vh;
+  background:
+  linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,.85)),
+  url('https://images.unsplash.com/photo-1519225421980-715cb0215aed');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
 }
 
-header h1{
-    font-size:3rem;
-    color:gold;
-    animation:fadeDown 1.5s ease;
+/* GOLD LIGHT OVERLAY ANIMATION */
+.hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top,var(--gold),transparent 60%);
+  opacity:.15;
+  animation:glowMove 8s infinite alternate;
 }
 
-header p{
-    margin:15px 0;
-    font-size:1.1rem;
-    animation:fadeUp 1.5s ease;
+@keyframes glowMove{
+  from{background-position:0% 0%;}
+  to{background-position:100% 100%;}
+}
+
+.hero-content{
+  z-index:2;
+  animation:heroFade 2s ease;
+}
+
+@keyframes heroFade{
+  from{opacity:0;transform:translateY(60px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.hero img{
+  width:130px;
+  margin-bottom:20px;
+  filter:drop-shadow(0 0 15px var(--gold));
+}
+
+.hero h1{
+  font-family:'Playfair Display', serif;
+  font-size:3.2rem;
+  color:var(--gold);
+}
+
+.hero p{
+  margin:15px 0 30px;
+  font-size:1.1rem;
+  letter-spacing:1px;
 }
 
 .btn{
-    padding:12px 25px;
-    background:gold;
-    color:#000;
-    text-decoration:none;
-    font-weight:bold;
-    border-radius:25px;
-    margin:10px;
-    display:inline-block;
-    transition:.3s;
+  padding:14px 35px;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  text-decoration:none;
+  border-radius:40px;
+  margin:10px;
+  display:inline-block;
+  transition:.4s;
 }
 
 .btn:hover{
-    background:#fff;
-    transform:scale(1.05);
+  background:var(--gold);
+  color:#000;
+  box-shadow:0 0 20px var(--gold);
 }
 
-/* SECTIONS */
+/* =========================
+   SECTION BASE
+========================= */
 section{
-    padding:60px 10%;
+  padding:90px 10%;
 }
 
-.title{
-    text-align:center;
-    margin-bottom:40px;
-    color:gold;
-    font-size:2rem;
+.section-title{
+  text-align:center;
+  font-family:'Playfair Display', serif;
+  font-size:2.6rem;
+  color:var(--gold);
+  margin-bottom:60px;
 }
 
-/* ABOUT */
+/* =========================
+   ABOUT (GLASS EFFECT)
+========================= */
 .about{
-    text-align:center;
-    line-height:1.8;
+  background:var(--glass);
+  backdrop-filter:blur(12px);
+  border-radius:20px;
+  padding:60px;
+  text-align:center;
+  line-height:1.9;
+  transform:translateY(60px);
+  opacity:0;
 }
 
-/* SERVICES */
+/* =========================
+   SERVICES (PREMIUM CARDS)
+========================= */
 .services{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:35px;
 }
 
-.service-box{
-    background:#111;
-    padding:25px;
-    text-align:center;
-    border-radius:10px;
-    transition:.4s;
+.service{
+  background:linear-gradient(145deg,#0c0c0c,#141414);
+  padding:40px 25px;
+  border-radius:20px;
+  text-align:center;
+  border:1px solid rgba(212,175,55,.2);
+  transform:translateY(60px);
+  opacity:0;
+  transition:.4s;
 }
 
-.service-box:hover{
-    transform:translateY(-10px);
-    background:#1c1c1c;
+.service:hover{
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 0 30px rgba(212,175,55,.25);
 }
 
-/* GALLERY */
+.service h3{
+  color:var(--gold);
+  margin-bottom:15px;
+}
+
+/* =========================
+   GALLERY
+========================= */
 .gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:15px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
 }
 
 .gallery img{
-    width:100%;
-    border-radius:10px;
-    transition:.4s;
+  width:100%;
+  border-radius:18px;
+  transition:.6s;
+  transform:scale(.9);
+  opacity:0;
 }
 
 .gallery img:hover{
-    transform:scale(1.08);
+  transform:scale(1.05);
 }
 
-/* CONTACT */
+/* =========================
+   CONTACT
+========================= */
 .contact{
-    text-align:center;
-    line-height:2;
+  text-align:center;
+  line-height:2.2;
+  transform:translateY(60px);
+  opacity:0;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 footer{
-    background:#111;
-    text-align:center;
-    padding:15px;
-    font-size:.9rem;
+  padding:25px;
+  text-align:center;
+  background:#000;
+  font-size:.9rem;
+  color:#aaa;
 }
 
-/* ANIMATIONS */
-@keyframes fadeDown{
-    from{opacity:0;transform:translateY(-40px);}
-    to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(40px);}
-    to{opacity:1;transform:translateY(0);}
-}
-
-/* WHATSAPP BUTTON */
+/* =========================
+   WHATSAPP FLOAT
+========================= */
 .whatsapp{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#25D366;
-    color:white;
-    padding:15px;
-    border-radius:50%;
-    font-size:20px;
-    text-decoration:none;
-    box-shadow:0 0 10px #25D366;
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#25D366;
+  color:#fff;
+  padding:15px 18px;
+  border-radius:50%;
+  font-size:22px;
+  text-decoration:none;
+  box-shadow:0 0 25px #25D366;
+  z-index:10;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <div>
-        <h1>Prince Tent & Events</h1>
-        <p>Complete Tent, Catering & Event Solutions</p>
-        <a href="tel:9199138929" class="btn">Call Now</a>
-        <a href="#contact" class="btn">Contact Us</a>
-    </div>
-</header>
+<!-- =========================
+     HERO
+========================= -->
+<section class="hero">
+  <div class="hero-content">
+    <!-- LOGO: yahan apna logo ka path daalna -->
+    <img src="logo.png" alt="Prince Tent Logo">
 
-<section class="about">
-    <h2 class="title">About Us</h2>
+    <h1>Prince Tent & Events</h1>
+    <p>Luxury Tent • Catering • Wedding & Event Specialists</p>
+
+    <a href="tel:9199138929" class="btn">Call Now</a>
+    <a href="#contact" class="btn">Book Event</a>
+  </div>
+</section>
+
+<!-- =========================
+     ABOUT
+========================= -->
+<section>
+  <div class="about reveal">
+    <h2 class="section-title">About Us</h2>
     <p>
-        Prince Tent & Events provides professional tent and catering services
-        for weddings, birthdays and all kinds of events in Saharsa and nearby areas.
-        We are known for quality service, timely setup and reasonable pricing.
+      Prince Tent & Events is a premium wedding and event service provider based in Saharsa, Bihar.
+      We specialize in luxury tent decoration, catering services and complete event execution.
+      Our focus is elegance, quality and unforgettable experiences.
     </p>
+  </div>
 </section>
 
+<!-- =========================
+     SERVICES
+========================= -->
 <section>
-    <h2 class="title">Our Services</h2>
-    <div class="services">
-        <div class="service-box">Wedding Tent Decoration</div>
-        <div class="service-box">Catering Services</div>
-        <div class="service-box">Birthday Party Setup</div>
-        <div class="service-box">Stage & Lighting</div>
-        <div class="service-box">Chair & Table Arrangement</div>
-    </div>
+  <h2 class="section-title">Our Services</h2>
+  <div class="services">
+    <div class="service reveal"><h3>Wedding Tent Decoration</h3><p>Royal & modern themed setups</p></div>
+    <div class="service reveal"><h3>Catering Services</h3><p>Hygienic & delicious menus</p></div>
+    <div class="service reveal"><h3>Stage & Lighting</h3><p>Premium lighting & LED setups</p></div>
+    <div class="service reveal"><h3>Birthday & Parties</h3><p>Elegant party arrangements</p></div>
+  </div>
 </section>
 
+<!-- =========================
+     GALLERY
+========================= -->
 <section>
-    <h2 class="title">Gallery</h2>
-    <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1521334884684-d80222895322">
-        <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0">
-        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed">
-        <img src="https://images.unsplash.com/photo-1506784365847-bbad939e9335">
-    </div>
+  <h2 class="section-title">Our Work</h2>
+  <div class="gallery">
+    <img class="reveal-img" src="https://images.unsplash.com/photo-1521334884684-d80222895322">
+    <img class="reveal-img" src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0">
+    <img class="reveal-img" src="https://images.unsplash.com/photo-1506784365847-bbad939e9335">
+  </div>
 </section>
 
-<section class="contact" id="contact">
-    <h2 class="title">Contact Us</h2>
+<!-- =========================
+     CONTACT
+========================= -->
+<section id="contact">
+  <div class="contact reveal">
+    <h2 class="section-title">Contact Us</h2>
     <p><strong>Prince Raj</strong></p>
     <p>📞 9199138929 | 9128576260</p>
     <p>📧 iamprinceraj25@gmail.com</p>
-    <p>📍 Lakhan Sweet Corner, Nagar Palika Chowk, Saharsa, Bihar - 852201</p>
+    <p>📍 Nagar Palika Chowk, Saharsa, Bihar</p>
+  </div>
 </section>
 
 <footer>
-    © 2025 Prince Tent & Events. All Rights Reserved.
+  © 2025 Prince Tent & Events | Designed with Premium Feel
 </footer>
 
 <a href="https://wa.me/9199138929" class="whatsapp">💬</a>
 
+<!-- =========================
+     SCROLL ANIMATION JS
+========================= -->
 <script>
-// Simple scroll animation
-const boxes = document.querySelectorAll('.service-box');
+const reveals = document.querySelectorAll('.reveal');
+const imgs = document.querySelectorAll('.reveal-img');
 
-window.addEventListener('scroll', ()=>{
-    boxes.forEach(box=>{
-        const pos = box.getBoundingClientRect().top;
-        if(pos < window.innerHeight - 100){
-            box.style.opacity = 1;
-            box.style.transform = 'translateY(0)';
-        }
-    });
-});
+function revealOnScroll(){
+  const trigger = window.innerHeight - 100;
+
+  reveals.forEach(el=>{
+    const top = el.getBoundingClientRect().top;
+    if(top < trigger){
+      el.style.opacity = 1;
+      el.style.transform = 'translateY(0)';
+    }
+  });
+
+  imgs.forEach(img=>{
+    const top = img.getBoundingClientRect().top;
+    if(top < trigger){
+      img.style.opacity = 1;
+      img.style.transform = 'scale(1)';
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
 </script>
 
 </body>
