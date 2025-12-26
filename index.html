@@ -88,26 +88,27 @@ section{padding:90px 10%;}
   margin-bottom:60px;
 }
 
-/* ================= PHOTO STACK SLIDER ================= */
+/* ================= PHOTO STACK (BIGGER) ================= */
 .stack-wrapper{
   display:flex;
   justify-content:center;
 }
 
 .photo-stack{
-  width:320px;
-  height:420px;
+  width:380px;        /* ⬅ bigger width */
+  height:520px;       /* ⬅ bigger height */
   position:relative;
-  perspective:1200px;
+  perspective:1400px;
 }
 
+/* CARD */
 .card{
   position:absolute;
   inset:0;
-  border-radius:40px;
+  border-radius:45px;
   overflow:hidden;
   background:#000;
-  box-shadow:0 30px 80px rgba(0,0,0,.7);
+  box-shadow:0 35px 90px rgba(0,0,0,.75);
   transition-property:transform,opacity;
   transition-timing-function:cubic-bezier(.19,1,.22,1);
 }
@@ -118,6 +119,7 @@ section{padding:90px 10%;}
   object-fit:cover;
 }
 
+/* GOLD BORDER */
 .card::after{
   content:"";
   position:absolute;
@@ -126,13 +128,30 @@ section{padding:90px 10%;}
   border-radius:inherit;
 }
 
-/* stack positions */
-.front{z-index:3;transform:translateX(0) scale(1);}
-.middle{z-index:2;transform:translate(18px,18px) scale(.95);opacity:.85;}
-.back{z-index:1;transform:translate(36px,36px) scale(.9);opacity:.6;}
+/* STACK POSITIONS */
+.front{
+  z-index:3;
+  transform:translateX(0) scale(1);
+}
+.middle{
+  z-index:2;
+  transform:translate(22px,22px) scale(.96);
+  opacity:.85;
+}
+.back{
+  z-index:1;
+  transform:translate(44px,44px) scale(.92);
+  opacity:.6;
+}
 
-.slide-left{transform:translateX(-120%) scale(.9);opacity:0;}
-.slide-right{transform:translateX(120%) scale(.9);opacity:0;}
+.slide-left{
+  transform:translateX(-130%) scale(.92);
+  opacity:0;
+}
+.slide-right{
+  transform:translateX(130%) scale(.92);
+  opacity:0;
+}
 
 /* ================= VIDEO GALLERY ================= */
 .video-gallery{
@@ -184,7 +203,7 @@ footer{
   </div>
 </section>
 
-<!-- PHOTO GALLERY (ANIMATED, SAME PHOTOS) -->
+<!-- PHOTO GALLERY -->
 <section>
   <h2 class="section-title">Event Gallery</h2>
   <div class="stack-wrapper">
@@ -196,7 +215,7 @@ footer{
   </div>
 </section>
 
-<!-- VIDEOS (UNCHANGED) -->
+<!-- VIDEOS -->
 <section>
   <h2 class="section-title">Event Videos</h2>
   <div class="video-gallery">
@@ -214,7 +233,7 @@ footer{
     <h2 class="section-title">Contact Us</h2>
     <p><strong>Prince Raj</strong></p>
     <p>📞 9199138929 | 9128576260</p>
-    <p>📧 iampriceraj25@gmail.com</p>
+    <p>📧 iamprinceraj25@gmail.com</p>
     <p>📍 Nagar Palika Chowk, Saharsa, Bihar</p>
   </div>
 </section>
@@ -223,7 +242,7 @@ footer{
 <a href="https://wa.me/9199138929" class="whatsapp">💬</a>
 
 <script>
-const images = [
+const images=[
  "IMG-20251226-WA0016.jpg",
  "IMG-20251226-WA0017.jpg",
  "IMG-20251226-WA0018.jpg",
@@ -234,12 +253,12 @@ const images = [
  "IMG-20251226-WA0042.jpg"
 ];
 
-let index = 0;
-const stack = document.getElementById("photoStack");
-let cards = Array.from(stack.children);
+let index=0;
+const stack=document.getElementById("photoStack");
+let cards=Array.from(stack.children);
 
-/* auto slide 3s */
-let auto = setInterval(()=>slide("left",800),3000);
+/* AUTO SLIDE 3s */
+let auto=setInterval(()=>slide("left",900),3000);
 
 function slide(dir,dur){
   cards.forEach(c=>c.style.transitionDuration=dur+"ms");
@@ -247,7 +266,7 @@ function slide(dir,dur){
 
   setTimeout(()=>{
     index=(index+1)%images.length;
-    cards[0].querySelector("img").src = images[index];
+    cards[0].querySelector("img").src=images[index];
     cards[0].className="card back";
     cards[1].className="card front";
     cards[2].className="card middle";
@@ -255,7 +274,7 @@ function slide(dir,dur){
   },dur);
 }
 
-/* swipe speed */
+/* TOUCH SPEED CONTROL */
 let sx=0,st=0;
 stack.addEventListener("touchstart",e=>{
  clearInterval(auto);
@@ -266,9 +285,9 @@ stack.addEventListener("touchend",e=>{
  let dx=e.changedTouches[0].clientX-sx;
  let t=Date.now()-st;
  let speed=Math.abs(dx/t);
- let dur=Math.max(300,Math.min(900,800-speed*300));
+ let dur=Math.max(350,Math.min(1000,900-speed*300));
  if(Math.abs(dx)>40) slide(dx<0?"left":"right",dur);
- auto=setInterval(()=>slide("left",800),3000);
+ auto=setInterval(()=>slide("left",900),3000);
 });
 </script>
 
