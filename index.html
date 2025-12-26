@@ -11,22 +11,31 @@
 :root{
   --gold:#d4af37;
   --dark:#050505;
+  --dark2:#0b0b0b;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-  background:var(--dark);
+  background:linear-gradient(120deg,#050505,#0b0b0b,#050505);
+  background-size:400% 400%;
+  animation:bgMove 25s ease infinite;
   color:#fff;
   font-family:'Poppins',sans-serif;
   overflow-x:hidden;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
 /* ================= HERO ================= */
 .hero{
   height:100vh;
   background:
-  linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.9)),
+  linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.9)),
   url("IMG-20251226-WA0050.jpg");
   background-size:cover;
   background-position:center;
@@ -37,47 +46,89 @@ body{
   position:relative;
 }
 
-.hero-content{z-index:2;}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top,var(--gold),transparent 70%);
+  opacity:.15;
+  animation:lightMove 12s ease-in-out infinite alternate;
+}
+
+@keyframes lightMove{
+  from{transform:translateX(-10%)}
+  to{transform:translateX(10%)}
+}
+
+.hero-content{
+  z-index:2;
+  animation:heroFade 1.8s ease forwards;
+}
+
+@keyframes heroFade{
+  from{opacity:0;transform:translateY(60px)}
+  to{opacity:1;transform:translateY(0)}
+}
 
 .hero-logo{
-  width:160px;height:160px;
+  width:160px;
+  height:160px;
   border-radius:50%;
   background:rgba(0,0,0,.6);
   padding:15px;
   margin-bottom:25px;
   border:2px solid var(--gold);
+  box-shadow:0 0 40px rgba(212,175,55,.6);
 }
 
 .hero h1{
   font-family:'Playfair Display',serif;
   font-size:3.2rem;
   color:var(--gold);
+  text-shadow:0 8px 20px rgba(0,0,0,.7);
 }
 
-.hero p{margin:18px 0 35px;}
+.hero p{
+  margin:18px 0 35px;
+  letter-spacing:.5px;
+}
 
 .btn{
-  padding:14px 36px;
+  padding:14px 38px;
   border:1px solid var(--gold);
   color:var(--gold);
   text-decoration:none;
   border-radius:40px;
   margin:10px;
+  display:inline-block;
+  transition:.4s;
+}
+
+.btn:hover{
+  background:var(--gold);
+  color:#000;
+  box-shadow:0 0 30px rgba(212,175,55,.8);
 }
 
 /* ================= SECTIONS ================= */
-section{padding:90px 5%;}
+section{
+  padding:100px 6%;
+  position:relative;
+}
 
 .section-title{
   text-align:center;
   font-family:'Playfair Display',serif;
   font-size:2.5rem;
   color:var(--gold);
-  margin-bottom:50px;
+  margin-bottom:60px;
 }
 
 /* ================= PHOTO STACK ================= */
-.stack-wrapper{display:flex;justify-content:center;}
+.stack-wrapper{
+  display:flex;
+  justify-content:center;
+}
 
 .photo-stack{
   width:95vw;
@@ -93,7 +144,7 @@ section{padding:90px 5%;}
   border-radius:50px;
   overflow:hidden;
   background:#000;
-  box-shadow:0 40px 100px rgba(0,0,0,.8);
+  box-shadow:0 40px 100px rgba(0,0,0,.85);
   transition:transform .9s cubic-bezier(.19,1,.22,1),opacity .9s;
 }
 
@@ -107,33 +158,39 @@ section{padding:90px 5%;}
   content:"";
   position:absolute;
   inset:0;
-  border:2px solid rgba(212,175,55,.7);
+  border:2px solid rgba(212,175,55,.65);
   border-radius:inherit;
 }
 
 .front{z-index:3;}
-.middle{z-index:2;transform:translate(24px,24px) scale(.96);opacity:.85;}
-.back{z-index:1;transform:translate(48px,48px) scale(.92);opacity:.6;}
+.middle{z-index:2;transform:translate(26px,26px) scale(.96);opacity:.85;}
+.back{z-index:1;transform:translate(52px,52px) scale(.92);opacity:.6;}
 
 .slide-left{transform:translateX(-130%) scale(.92);opacity:0;}
 .slide-right{transform:translateX(130%) scale(.92);opacity:0;}
 
+/* ================= DIVIDER SPACE ================= */
+.divider-space{
+  height:120px;
+}
+
 /* ================= VIDEO SECTION ================= */
 .video-list{
-  max-width:500px;
+  max-width:520px;
   margin:auto;
   display:grid;
-  gap:35px;
+  gap:40px;
 }
 
 .video-box{
   position:relative;
-  border-radius:24px;
+  border-radius:26px;
   overflow:hidden;
   border:1px solid rgba(212,175,55,.35);
-  transform:scale(.95);
+  background:#000;
   opacity:0;
-  transition:.8s ease;
+  transform:translateY(40px) scale(.96);
+  transition:1s ease;
 }
 
 .video-box video{
@@ -141,21 +198,25 @@ section{padding:90px 5%;}
   display:block;
 }
 
-/* label */
 .video-label{
   position:absolute;
-  bottom:10px;
-  left:10px;
+  bottom:12px;
+  left:12px;
   background:rgba(0,0,0,.6);
   color:#fff;
-  padding:6px 12px;
+  padding:7px 14px;
   border-radius:20px;
   font-size:.85rem;
   border:1px solid rgba(212,175,55,.6);
 }
 
 /* ================= CONTACT ================= */
-.contact{text-align:center;line-height:2.2;}
+.contact{
+  text-align:center;
+  line-height:2.2;
+  max-width:600px;
+  margin:auto;
+}
 
 footer{
   padding:25px;
@@ -175,6 +236,7 @@ footer{
   border-radius:50%;
   font-size:22px;
   text-decoration:none;
+  box-shadow:0 0 25px rgba(37,211,102,.7);
 }
 </style>
 </head>
@@ -192,7 +254,7 @@ footer{
   </div>
 </section>
 
-<!-- PHOTO GALLERY -->
+<!-- GALLERY -->
 <section>
   <h2 class="section-title">Event Gallery</h2>
   <div class="stack-wrapper">
@@ -204,30 +266,17 @@ footer{
   </div>
 </section>
 
+<div class="divider-space"></div>
+
 <!-- VIDEOS -->
 <section>
-  <h2 class="section-title">Event Videos</h2>
+  <h2 class="section-title">Live Event Moments</h2>
   <div class="video-list">
-    <div class="video-box reveal">
-      <video controls src="VID-20251226-WA0014.mp4"></video>
-      <div class="video-label">Live Wedding Entry</div>
-    </div>
-    <div class="video-box reveal">
-      <video controls src="VID-20251226-WA0020.mp4"></video>
-      <div class="video-label">Stage Decoration</div>
-    </div>
-    <div class="video-box reveal">
-      <video controls src="VID-20251226-WA0021.mp4"></video>
-      <div class="video-label">Catering Service</div>
-    </div>
-    <div class="video-box reveal">
-      <video controls src="VID-20251226-WA0026.mp4"></video>
-      <div class="video-label">Wedding Lighting</div>
-    </div>
-    <div class="video-box reveal">
-      <video controls src="VID-20251226-WA0029.mp4"></video>
-      <div class="video-label">Live Event Moments</div>
-    </div>
+    <div class="video-box"><video controls src="VID-20251226-WA0014.mp4"></video><div class="video-label">Wedding Entry</div></div>
+    <div class="video-box"><video controls src="VID-20251226-WA0020.mp4"></video><div class="video-label">Stage Decoration</div></div>
+    <div class="video-box"><video controls src="VID-20251226-WA0021.mp4"></video><div class="video-label">Catering Service</div></div>
+    <div class="video-box"><video controls src="VID-20251226-WA0026.mp4"></video><div class="video-label">Lighting Setup</div></div>
+    <div class="video-box"><video controls src="VID-20251226-WA0029.mp4"></video><div class="video-label">Event Highlights</div></div>
   </div>
 </section>
 
@@ -237,7 +286,7 @@ footer{
     <h2 class="section-title">Contact Us</h2>
     <p><strong>Prince Raj</strong></p>
     <p>📞 9199138929 | 9128576260</p>
-    <p>📧 iampriceraj25@gmail.com</p>
+    <p>📧 iamprinceraj25@gmail.com</p>
     <p>📍 Nagar Palika Chowk, Saharsa, Bihar</p>
   </div>
 </section>
@@ -261,7 +310,8 @@ const images=[
 let index=0;
 const stack=document.getElementById("photoStack");
 let cards=Array.from(stack.children);
-let auto=setInterval(()=>slide("left",900),3000);
+
+setInterval(()=>slide("left",900),3000);
 
 function slide(dir,dur){
   cards.forEach(c=>c.style.transitionDuration=dur+"ms");
@@ -283,11 +333,11 @@ const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
       e.target.style.opacity=1;
-      e.target.style.transform="scale(1)";
+      e.target.style.transform="translateY(0) scale(1)";
       obs.unobserve(e.target);
     }
   });
-},{threshold:.3});
+},{threshold:.25});
 
 vids.forEach(v=>obs.observe(v));
 </script>
