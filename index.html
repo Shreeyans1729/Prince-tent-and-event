@@ -49,7 +49,8 @@ body{
 .hero-content{z-index:2;}
 
 .hero-logo{
-  width:160px;height:160px;
+  width:160px;
+  height:160px;
   object-fit:contain;
   border-radius:50%;
   background:rgba(0,0,0,.6);
@@ -61,7 +62,7 @@ body{
 
 .hero h1{
   font-family:'Playfair Display', serif;
-  font-size:3.3rem;
+  font-size:3.2rem;
   color:var(--gold);
 }
 
@@ -78,37 +79,38 @@ body{
 }
 
 /* ================= SECTIONS ================= */
-section{padding:90px 10%;}
+section{padding:90px 5%;}
 
 .section-title{
   text-align:center;
   font-family:'Playfair Display', serif;
-  font-size:2.6rem;
+  font-size:2.5rem;
   color:var(--gold);
-  margin-bottom:60px;
+  margin-bottom:50px;
 }
 
-/* ================= PHOTO STACK (BIGGER) ================= */
+/* ================= PHOTO STACK (FINAL SIZE) ================= */
 .stack-wrapper{
   display:flex;
   justify-content:center;
 }
 
 .photo-stack{
-  width:380px;        /* ⬅ bigger width */
-  height:520px;       /* ⬅ bigger height */
+  width:95vw;          /* almost full width on mobile */
+  max-width:420px;     /* controlled on large screens */
+  height:600px;        /* tall so details visible */
   position:relative;
-  perspective:1400px;
+  perspective:1600px;
 }
 
 /* CARD */
 .card{
   position:absolute;
   inset:0;
-  border-radius:45px;
+  border-radius:50px;
   overflow:hidden;
   background:#000;
-  box-shadow:0 35px 90px rgba(0,0,0,.75);
+  box-shadow:0 40px 100px rgba(0,0,0,.8);
   transition-property:transform,opacity;
   transition-timing-function:cubic-bezier(.19,1,.22,1);
 }
@@ -135,15 +137,16 @@ section{padding:90px 10%;}
 }
 .middle{
   z-index:2;
-  transform:translate(22px,22px) scale(.96);
+  transform:translate(24px,24px) scale(.96);
   opacity:.85;
 }
 .back{
   z-index:1;
-  transform:translate(44px,44px) scale(.92);
+  transform:translate(48px,48px) scale(.92);
   opacity:.6;
 }
 
+/* SLIDE */
 .slide-left{
   transform:translateX(-130%) scale(.92);
   opacity:0;
@@ -156,8 +159,8 @@ section{padding:90px 10%;}
 /* ================= VIDEO GALLERY ================= */
 .video-gallery{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:25px;
 }
 .video-gallery video{
   width:100%;
@@ -233,7 +236,7 @@ footer{
     <h2 class="section-title">Contact Us</h2>
     <p><strong>Prince Raj</strong></p>
     <p>📞 9199138929 | 9128576260</p>
-    <p>📧 iamprinceraj25@gmail.com</p>
+    <p>📧 iampriceraj25@gmail.com</p>
     <p>📍 Nagar Palika Chowk, Saharsa, Bihar</p>
   </div>
 </section>
